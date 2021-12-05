@@ -1,0 +1,270 @@
+﻿<script>
+function mult(x) {var out=1;do {out=out*x;x-=1;} while(x>1);if(out==0){out=1;};return out;}
+function perm(n,r) {var out = (mult(n))/(mult(n-r));return out;}
+function comb(n,r) {var out = (mult(n))/(mult(n-r)*mult(r));return out;}
+</script>
+
+<style>
+body {
+	margin:0px;
+	background:url('bg.jpg') center no-repeat fixed;
+}
+.box_1 {
+	width:100%;
+	height:35px;
+	padding:15px;
+	font-family:Corbel;
+	font-size:17px;
+	color:#333;
+	border:1px solid #777;
+	margin:10px;
+	background:rgba(255,255,255,0.78);
+	transition:0.3s width;
+	cursor:default;
+}
+.box_t {
+	width:100%;
+	height:35px;
+	line-height:35px;
+	padding:15px;
+	font-family:Corbel;
+	font-size:19px;
+	text-align:center;
+	color:#333;
+	border:1px solid #777;
+	margin:10px;
+	background:rgba(255,255,255,0.78);
+	transition:0.3s width;
+	cursor:default;
+}
+.box_a {
+	width:100%;
+	height:35px;
+	line-height:35px;
+	padding:15px;
+	font-family:Corbel;
+	font-size:17px;
+	text-align:center;
+	color:#09f;
+	border:1px solid #777;
+	margin:10px;
+	cursor:pointer;
+	background:rgba(255,255,255,0.78);
+	transition:0.3s width;
+}
+.box_a:hover {
+	text-decoration:underline;
+}
+.box_2 {
+	width:100%;
+	cursor:default;
+	line-height:35px;
+	padding:15px;
+	font-family:Corbel;
+	font-size:17px;
+	color:#333;
+	border:1px solid #777;
+	margin:10px;
+	background:rgba(255,255,255,0.78);
+	transition:0.3s width;
+}
+.box_6 {
+	width:100%;
+	line-height:35px;
+	padding:15px;
+	font-family:Corbel;
+	font-size:17px;
+	color:#333;
+	cursor:default;
+	border:1px solid #777;
+	margin:10px;
+	background:rgba(255,255,255,0.78);
+	cursor:default;
+	transition:0.3s width;
+}
+.box_4 {
+	line-height:25px;
+	background:#FFF;
+	transition:0.3s width;
+}
+.txt_1 {
+	text-align:right;
+	float:right;
+	height:35px;
+	width:60px;
+	line-height:55px;
+	padding-right:10px;
+	border:1px solid #09f;
+	box-shadow:inset 0px 0px 4px rgba(0,0,0,0.2);
+}
+.txt_5 {
+	text-align:right;
+	margin-left:8px;
+	height:35px;
+	line-height:55px;
+	padding-right:10px;
+	border:1px solid #09f;
+	box-shadow:inset 0px 0px 4px rgba(0,0,0,0.2);
+}
+.txt_2 {
+	margin-top:8px;
+	text-align:center;
+	width:40px;
+	height:35px;
+	line-height:55px;
+	border:1px solid #09f;
+	box-shadow:inset 0px 0px 4px rgba(0,0,0,0.2);
+}
+.txt_3 {
+	margin-right:5px;
+}
+.tdt_1 {
+	float:right;
+}
+#box {
+	width:400px;
+	transition:0.3s width;
+}
+</style>
+<body onload="rz()" onresize="rz()">
+
+
+<div id="box">
+<div id="toc_box" class="box_t">
+<b>Permutation & Combination</b>
+</div>
+
+<div id="toc_box" class="box_1">Total objects count <input maxlength="2" onclick="cal_1()" class="txt_1" type="text" placeholder="" id="TOC" onkeyup="cal_1()" /></div>
+<div id="soc_box" class="box_1">Selected objects count <input maxlength="2" onclick="cal_1()" class="txt_1" type="text" placeholder="" id="SOC" onkeyup="cal_1()" /></div>
+<div id="sel_box" class="box_1">
+Calculation Type
+<div class="tdt_1">
+<label onclick="chngt('p')"><input type="radio" name="RB_0" id="ST_1" checked="">Permutation</label>
+<label onclick="chngt('c')"><input type="radio" name="RB_0" id="ST_2">Combination</label>
+</div>
+</div>
+<div id="OPBX" class="box_2">
+	<label onclick="cal_1()"><input type="radio" class="txt_3" name="RB_1" id="RB_1_1" checked="">No special options</label>
+	<br><label onclick="cal_1()"><input type="radio" name="RB_1" id="RB_1_2">
+	<input type="text" placeholder="" id="SPC_1" onfocus="slect(this)" onkeyup="cal_1()" class="txt_2" maxlength="2"> object(s) must inside of selection.</label>
+	<br><label onclick="cal_1()"><input type="radio" name="RB_1" id="RB_1_3">
+	<input type="text" placeholder="" id="SPC_2" onfocus="slect(this)" onkeyup="cal_1()" class="txt_2" maxlength="2"> object(s) must outside of selection.</label>
+</div>
+<div id="op_box" class="box_6">
+<div id="out_box">Permutation count <input type="text" placeholder="" readonly="true" id="CC" class="txt_5"></div>
+<div id="op_box" class="box_4">
+<div id="info_1"></div>
+</div>
+</div>
+
+<div id="toc_box" class="box_a" onclick="a()">
+<b>Deshan Blog</b>
+</div>
+
+</div>
+
+
+
+
+<input id='p_cd' type='hidden' value='
+<label onclick="cal_1()"><input type="radio" class="txt_3" name="RB_1" id="RB_1_1" checked="">No special options</label>
+<br><label onclick="cal_1()"><input type="radio" name="RB_1" id="RB_1_2">
+<input type="text" placeholder="" id="SPC_1" onfocus="slect(this)" onkeyup="cal_1()" class="txt_2" maxlength="2"> object(s) must inside of selection.</label>
+<br><label onclick="cal_1()"><input type="radio" name="RB_1" id="RB_1_3">
+<input type="text" placeholder="" id="SPC_2" onfocus="slect(this)" onkeyup="cal_1()" class="txt_2" maxlength="2"> object(s) must outside of selection.</label>
+'>
+
+<input id='c_cd' type='hidden' value='
+<label onclick="cal_1()"><input type="radio" class="txt_3" name="RB_1" id="RB_1_1" checked="">No special options</label>
+<br><label onclick="cal_1()"><input type="radio" name="RB_1" id="RB_1_2">
+<input type="text" placeholder="" id="SPC_1" onfocus="slect(this)" onkeyup="cal_1()" class="txt_2" maxlength="2"> object(s) must inside of selection.</label>
+<br><label onclick="cal_1()"><input type="radio" name="RB_1" id="RB_1_3">
+<input type="text" placeholder="" id="SPC_2" onfocus="slect(this)" onkeyup="cal_1()" class="txt_2" maxlength="2"> object(s) must outside of selection.</label>
+'>
+
+
+<script>
+function a() {window.open('http://dn-w.blogspot.com/');}
+function rz() {
+var x = window.innerWidth;
+var c = document.getElementById('box');
+if(x>330) {document.getElementById('box').style.width='400px';c.style.margin='auto';}
+else {document.getElementById('box').style.width=window.innerWidth-65 + 'px';c.style.margin='0px';}
+}
+
+
+function chngt(x) {
+var y = document.getElementById('OPBX');
+if(x=='c'){y.innerHTML=document.getElementById('c_cd').value;document.getElementById('out_box').innerHTML='Combination count <input type="text" placeholder="" readonly="true" id="CC" class="txt_5">';}
+if(x=='p'){y.innerHTML=document.getElementById('p_cd').value;document.getElementById('out_box').innerHTML='Permutation count <input type="text" placeholder="" readonly="true" id="CC" class="txt_5">';}
+cal_1();
+}
+
+function cal_1() {
+	var n = document.getElementById('TOC').value;
+	var r = document.getElementById('SOC').value;
+if(n!='' && r!='') {
+
+
+	if(document.getElementById('ST_2').checked) {
+	var n = document.getElementById('TOC').value;
+	var r = document.getElementById('SOC').value;
+	var a = document.getElementById('SPC_1').value;
+	var b = document.getElementById('SPC_2').value;
+	var i = document.getElementById('info_1');
+	get_cal_1(n,r,a,b,i);
+	}
+
+	if(document.getElementById('ST_1').checked) {
+	var n = document.getElementById('TOC').value;
+	var r = document.getElementById('SOC').value;
+	var a = document.getElementById('SPC_1').value;
+	var b = document.getElementById('SPC_2').value;
+	var i = document.getElementById('info_1');
+	get_cal_2(n,r,a,b,i);
+	}
+}
+}
+
+function get_cal_1(n,r,a,b,i) {
+	var out = 0;
+	var inf = '';
+	inf+='Selecting '+ r + ' objects from '+ n + ' objects collection.';
+	if(document.getElementById('RB_1_1').checked) {out = comb(n,r);}
+	if(document.getElementById('RB_1_2').checked) {out = comb((n-a),(r-a));inf+=' And '+ a + ' of special object(s) should be inside of selected group.';}
+	if(document.getElementById('RB_1_3').checked) {out = comb(n,r) - comb((n-b),(r-b));inf+=' And '+ b + " of special object(s) should be outside of selected group.";}
+	out = Math.round(out);
+	inf+='There are '+ out + ' permutation, According to the rules of the selection.';
+	document.getElementById('CC').value = out;
+	i.innerHTML='<p align="justify">'+inf+'</p>';
+}
+
+function get_cal_2(n,r,a,b,i) {
+	var out = 0;
+	var inf = '';
+	inf+='Selecting '+ r + ' objects from '+ n + ' of objects collection.';
+	if(document.getElementById('RB_1_1').checked) {out = perm(n,r);}
+	if(document.getElementById('RB_1_2').checked) {out = perm((n-a),(r-a));inf+=' And '+ a + ' of special object(s) should be inside of selected group.';}
+	if(document.getElementById('RB_1_3').checked) {out = perm(n,r) - perm((n-b),(r-b));inf+=' And '+ b + " of special object(s) should be outside of selected group.";}
+	out = Math.round(out);
+	inf+='There are '+ out + ' combination, According to the rules of the selection.';
+	document.getElementById('CC').value = out;
+	i.innerHTML='<p align="justify">'+inf+'</p>';
+}
+
+function slect(obj) {
+if(obj.id=='SPC_1') {document.getElementById('RB_1_2').checked="true";}
+if(obj.id=='SPC_2') {document.getElementById('RB_1_3').checked="true";}
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
